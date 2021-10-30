@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>mysql - sifosqs</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="sifosqs"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="sifosqs"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="mysql"><meta property="og:type" content="blog"><meta property="og:title" content="mysql"><meta property="og:url" content="http://example.com/2021/10/30/mysql/"><meta property="og:site_name" content="sifosqs"><meta property="og:description" content="mysql"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="d:/Desktop/1.png"><meta property="og:image" content="d:/Desktop/2.png"><meta property="og:image" content="d:/Desktop/3.png"><meta property="og:image" content="d:/Desktop/4.png"><meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2018.cnblogs.com%2Fcommon%2F842724%2F202002%2F842724-20200228155137649-1462263734.png&amp;refer=http%3A%2F%2Fimg2018.cnblogs.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1616315892&amp;t=710e5808fbd46e832dfa57904c1a3b37"><meta property="og:image" content="c:%5CUsers%5CAdmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210328122249803.png"><meta property="article:published_time" content="2021-10-30T11:59:00.000Z"><meta property="article:modified_time" content="2021-10-30T11:59:25.400Z"><meta property="article:author" content="sifosqs"><meta property="article:tag" content="mysql"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="D:\Desktop\1.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/10/30/mysql/"},"headline":"mysql","image":["d:/Desktop/1.png","d:/Desktop/2.png","d:/Desktop/3.png","d:/Desktop/4.png","c:%5CUsers%5CAdmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210328122249803.png"],"datePublished":"2021-10-30T11:59:00.000Z","dateModified":"2021-10-30T11:59:25.400Z","author":{"@type":"Person","name":"sifosqs"},"publisher":{"@type":"Organization","name":"sifosqs","logo":{"@type":"ImageObject","url":"http://example.com/img/logo.svg"}},"description":"mysql"}</script><link rel="canonical" href="http://example.com/2021/10/30/mysql/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="sifosqs" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-10-30T11:59:00.000Z" title="2021/10/30 下午7:59:00">2021-10-30</time>发表</span><span class="level-item"><time dateTime="2021-10-30T11:59:25.400Z" title="2021/10/30 下午7:59:25">2021-10-30</time>更新</span><span class="level-item">17 分钟读完 (大约2615个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">mysql</h1><div class="content"><p>mysql</p>
+<span id="more"></span>
+
+
+
+<h2 id="MySql"><a href="#MySql" class="headerlink" title="MySql"></a>MySql</h2><blockquote>
+</blockquote>
+<h3 id="1-安装mysql"><a href="#1-安装mysql" class="headerlink" title="1.安装mysql"></a>1.安装mysql</h3><ol>
+<li><p>解压</p>
+</li>
+<li><p>把这个放到自己的目录下</p>
+</li>
+<li><p>添加环境变量</p>
+</li>
+<li><p>在E:\Environment\mysql-5.7.33新建配置文件ini  压缩包没有需要配置</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mysqld]</span></span><br><span class="line"><span class="attr">basedir</span>=E:\environment\mysql-<span class="number">5.7</span>.<span class="number">33</span>\</span><br><span class="line"><span class="attr">datadir</span>=E:\environment\mysql-<span class="number">5.7</span>.<span class="number">33</span>\data\  这个是自动生成的，不需要自己新建</span><br><span class="line"><span class="attr">port</span>=<span class="number">3306</span></span><br><span class="line">skip-grant-tables</span><br></pre></td></tr></table></figure></li>
+<li><p>启动管理员模式的cmd，并将路径切换到mysql下的bin目录，然后输入mysqld -install(安装mysql)     cd /d E:\environment\mysql-5.7.33\bin</p>
+</li>
+<li><p>在输入mysqld –initialize-insecure –user=mysql 初始化数据库文件</p>
+</li>
+<li><p>然后再次启动mysql然后用命令mysql -u root -p （P后面不要有空格，否则密码就变成了空格）进入nysql管理界面（密码可为空）</p>
+</li>
+<li><p>进入界面后在修改密码</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update mysql.user <span class="keyword">set</span> authentication_string<span class="operator">=</span>password(<span class="string">&#x27;123456&#x27;</span>) <span class="keyword">where</span> <span class="keyword">user</span><span class="operator">=</span><span class="string">&#x27;root&#x27;</span> <span class="keyword">and</span> Host<span class="operator">=</span> <span class="string">&#x27;localhost&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>最后输入flush privileges;  刷新权限</p>
+</li>
+<li><p>修改my.ini文件删除最后一句skip-grant-tables</p>
+</li>
+<li><p>重启mysql即可真常使用</p>
+</li>
+<li><p>net stop mysql</p>
+<p>net start mysql</p>
+</li>
+<li><p>链接上测试出现一下结果就OK了</p>
+</li>
+</ol>
+<p>用完exit退出就OK了</p>
+<h3 id="2-安装SQLyog"><a href="#2-安装SQLyog" class="headerlink" title="2.安装SQLyog"></a>2.安装SQLyog</h3><p>链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1D_iRna8V90omfHsKHyeBtg">https://pan.baidu.com/s/1D_iRna8V90omfHsKHyeBtg</a> 提取码: bqht 复制这段内容后打开百度网盘手机App，操作更方便哦</p>
+<img src="D:\Desktop\1.png" alt="图片" style="zoom: 80%;" />
+
+<img src="D:\Desktop\2.png" alt="图片" style="zoom:50%;" />
+
+<ol>
+<li><p>新建一个数据库school</p>
+</li>
+<li><p>新建一个表student</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字段：id,name,age</span><br></pre></td></tr></table></figure>
+
+<p><img src="D:\Desktop\3.png" alt="ytupian"></p>
+</li>
+</ol>
+<p><img src="D:\Desktop\4.png" alt="tupian"></p>
+<h3 id="3-连接数据库"><a href="#3-连接数据库" class="headerlink" title="3.连接数据库"></a>3.连接数据库</h3><p>命令行连接数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql <span class="operator">-</span>uroot <span class="operator">-</span>p123456  <span class="comment">--（注释）连接数据库</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">update mysql.user <span class="keyword">set</span> authentication_string<span class="operator">=</span>password(<span class="string">&#x27;123456&#x27;</span>) <span class="keyword">where</span> <span class="keyword">user</span><span class="operator">=</span><span class="string">&#x27;root&#x27;</span> <span class="keyword">and</span> Host<span class="operator">=</span> <span class="string">&#x27;localhost&#x27;</span>;<span class="comment">--修改用户密码</span></span><br><span class="line">flush privileges<span class="comment">--刷新权限</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">---------------------------------------------</span></span><br><span class="line"><span class="comment">--所有的语句都使用;结尾</span></span><br><span class="line"><span class="keyword">show</span> databases;<span class="comment">--查看所有数据库</span></span><br><span class="line">use school<span class="comment">--切换数据库</span></span><br><span class="line"><span class="keyword">show</span> tables;<span class="comment">--查看数据库中所有表</span></span><br><span class="line"><span class="keyword">describe</span> student;<span class="comment">--显示数据库中全部信息（若打错了，ctrl+c强行终止）</span></span><br><span class="line"><span class="keyword">create</span> database westos;<span class="comment">--创建一个数据库</span></span><br><span class="line">exit;<span class="comment">--退出链接--</span></span><br><span class="line"><span class="comment">--单行注释（sql本身的注释）</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">多行注释</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>DDL           定义</p>
+<p>DML            操作</p>
+<p>DQL            查询</p>
+<p>DCL            控制</p>
+<h3 id="4-操作数据库"><a href="#4-操作数据库" class="headerlink" title="4.操作数据库"></a>4.操作数据库</h3><p>操作数据库 &gt;    操作数据库表数据</p>
+<h4 id="4-1操作数据库"><a href="#4-1操作数据库" class="headerlink" title="4.1操作数据库"></a>4.1操作数据库</h4><ol>
+<li><p>创建数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> westos;</span><br></pre></td></tr></table></figure></li>
+<li><p>删除数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> DATABASE IF <span class="keyword">EXISTS</span> westos;</span><br></pre></td></tr></table></figure></li>
+<li><p>使==用==数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- tab键的上面。如果你的表名或者字段名是一个特殊字符，就需要带``</span></span><br><span class="line">USE `school`;</span><br></pre></td></tr></table></figure></li>
+<li><p>查看数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> database;<span class="comment">-- 查看数据库</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="4-2数据库的列类型"><a href="#4-2数据库的列类型" class="headerlink" title="4.2数据库的列类型"></a>4.2数据库的列类型</h4><blockquote>
+<p>数值</p>
+</blockquote>
+<ul>
+<li>tinyint  是十分小的数据    1个字节</li>
+<li>smallint  较小的数据   2个字节</li>
+<li>mediumint  中等大小的数据  3个字节</li>
+<li>*int   标准的数据   4个数据**bigint   较大的数据   8个字节  </li>
+<li>float     单精度   4个字节</li>
+<li>double    8个字节</li>
+<li>decimal   字符串的浮点数（金融）</li>
+</ul>
+<blockquote>
+<p>字符串</p>
+</blockquote>
+<ul>
+<li>char   字符串固定的  0~255</li>
+<li><strong>varchar  可变字符串  0~65535，常用变量</strong></li>
+<li>tinytext  微型文本    2^8-1</li>
+<li><strong>text  文本串   2^16-1 ，保存大文本</strong></li>
+</ul>
+<blockquote>
+<p>时间日期</p>
+</blockquote>
+<p>​    java.util.Date</p>
+<ul>
+<li>date   YYY-MM-DD  ,日期格式</li>
+<li>time  HH:mm:ss    时间格式</li>
+<li><strong>datetime     YYY-MM-DD  HH:mm:ss  最常用的时间格式</strong></li>
+<li>**timestamp  时间戳   1970.1.1到现在的毫秒数 **  也较为常用</li>
+<li>year   年份表示</li>
+</ul>
+<blockquote>
+<p>null</p>
+</blockquote>
+<ul>
+<li>没有值</li>
+<li>==<strong>注意，不要使用null进行运算，结果为null</strong>==</li>
+</ul>
+<h4 id="4-3数据库的字段和属性（重点）"><a href="#4-3数据库的字段和属性（重点）" class="headerlink" title="4.3数据库的字段和属性（重点）"></a>4.3数据库的字段和属性（重点）</h4><p>==unsigned：==</p>
+<ul>
+<li>无符号的整数</li>
+<li>声明了该列不能为负数</li>
+</ul>
+<p>==zerofill:==</p>
+<ul>
+<li>0填充的</li>
+<li>不足的位数，使用0来填充</li>
+</ul>
+<p>==自增==：</p>
+<ul>
+<li>通常理解为自增，自动在上一条记录的基础上+1（默认）</li>
+<li>通常用来设计唯一的逐渐主键~index ，必须是整数、</li>
+<li>可以自定义设计主键自增其实</li>
+</ul>
+<p>==非空==</p>
+<ul>
+<li>假设设置为  notnull 如果不给他赋值，他就报错</li>
+</ul>
+<p>==默认==</p>
+<ul>
+<li>设置默认值</li>
+<li>sex ,默认值为男，如果不指定该列的值，则会有默认的值</li>
+</ul>
+<p>==每一个表必须存在的五个字段，未来做项目用的，表示一个记录存在的意义==</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*  每个表必须要具备的东西</span></span><br><span class="line"><span class="comment">id  主键</span></span><br><span class="line"><span class="comment">`version`  乐观锁</span></span><br><span class="line"><span class="comment">is_delete 伪删除</span></span><br><span class="line"><span class="comment">gmt_create  创建时间</span></span><br><span class="line"><span class="comment">gmt_update  修改时间</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-4创建数据库表"><a href="#4-4创建数据库表" class="headerlink" title="4.4创建数据库表"></a>4.4创建数据库表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">....</span><br></pre></td></tr></table></figure>
+
+<p>格式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">createtable[if <span class="keyword">not</span> <span class="keyword">exists</span>] `表名`(</span><br><span class="line">`字段名` 列类型 [属性] [索引] [注释],</span><br><span class="line">`字段名` 列类型 [属性] [索引] [注释],</span><br><span class="line">    ......</span><br><span class="line">`字段名` 列类型 [属性] [索引] [注释]</span><br><span class="line">)[表的类型][字符集设置][注释]</span><br></pre></td></tr></table></figure>
+
+<p><strong>常用命令</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> database school<span class="comment">--查看创建数据库的语句</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> student <span class="comment">--查看student数据表的定义语句</span></span><br><span class="line"><span class="keyword">desc</span> student  <span class="comment">--查看表的结构</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-5数据表的类型"><a href="#4-5数据表的类型" class="headerlink" title="4.5数据表的类型"></a>4.5数据表的类型</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 关于数据引擎</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">innodb  默认使用</span></span><br><span class="line"><span class="comment">myisam   早些年使用</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>MYISAM</th>
+<th>INNODB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>事务支持</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>数据行锁定</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>外键约束</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>全文检索</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>表空间的大小</td>
+<td>较小</td>
+<td>较大，约2倍</td>
+</tr>
+</tbody></table>
+<p>常规使用操作：</p>
+<ul>
+<li>MYISAM:    节约空间，速度较快</li>
+<li>INNODB:   安全性高，事物的处理，多表多用户操作</li>
+</ul>
+<blockquote>
+<p>在物理空间存在的位置</p>
+</blockquote>
+<p>所有的数据库文件都存在data目录下</p>
+<p>本质是文件的存储</p>
+<blockquote>
+<p>设置数据库的字符编码</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">charset<span class="operator">=</span>utf8</span><br></pre></td></tr></table></figure>
+
+<p>不设置的话 ，会是mysql默认的（不支持中文）</p>
+<p>在my.ini中配置默认的编码</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">character</span><span class="operator">-</span><span class="keyword">set</span><span class="operator">-</span>server<span class="operator">=</span>utf8 </span><br></pre></td></tr></table></figure>
+
+<h4 id="4-6修改和删除"><a href="#4-6修改和删除" class="headerlink" title="4.6修改和删除"></a>4.6修改和删除</h4><blockquote>
+<p>修改</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 修改表名</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> student RENAME <span class="keyword">AS</span> student1 </span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> student1 RENAME <span class="keyword">AS</span> student</span><br><span class="line"><span class="comment">-- 修改表的字段</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 MODIFY 字段 <span class="type">VARCHAR</span>(<span class="number">11</span>)<span class="comment">-- 修改约束</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 CHANGE age age1 <span class="type">INT</span>(<span class="number">1</span>)<span class="comment">-- 字段重命名</span></span><br><span class="line"><span class="comment">-- 删除表的字段</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">DROP</span> 字段 </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>删除</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除表(如果表存在再删除)</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> teacher</span><br></pre></td></tr></table></figure>
+
+<p>==所有的创建和删除操作都加上条件判断，以免报错==</p>
+<p>注意点：</p>
+<ul>
+<li>``字段名</li>
+<li>‘ ‘ 单引号</li>
+<li>注释 –   /**/</li>
+<li>sql关键字大小写不明感，简易大家小写</li>
+<li>所有符号用英文</li>
+</ul>
+<h3 id="5-MySql的数据管理"><a href="#5-MySql的数据管理" class="headerlink" title="5.MySql的数据管理"></a>5.MySql的数据管理</h3><h4 id="5-1外键（了解即可）"><a href="#5-1外键（了解即可）" class="headerlink" title="5.1外键（了解即可）"></a>5.1外键（了解即可）</h4><p>删除有外键关系的表必须先删除主表，后删除从表</p>
+<blockquote>
+<p>方式二：创建表成功后添加外键</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `student` </span><br><span class="line"><span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> `FK_gradeid` <span class="keyword">FOREIGN</span> KEY(`gradeid`) <span class="keyword">REFERENCES</span> `grade`(`gradeid`);</span><br><span class="line"><span class="comment">-- ALTER TABLE 表  ADD CONSTRAINT 约束名 FOREIGN KEY(作为外键的列) REFERENCES 那个表（那个字段）</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>上面的是物理层面的外键</p>
+<p>==最佳实践==</p>
+<pre><code>      在程序中实现
+</code></pre>
+<h4 id="5-2DML语言（全部记住，背下来）"><a href="#5-2DML语言（全部记住，背下来）" class="headerlink" title="5.2DML语言（全部记住，背下来）"></a>5.2DML语言（全部记住，背下来）</h4><ul>
+<li>insert</li>
+<li>update</li>
+<li>delete</li>
+</ul>
+<h4 id="5-3添加insert"><a href="#5-3添加insert" class="headerlink" title="5.3添加insert"></a>5.3添加insert</h4><blockquote>
+<p>insert</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `student`(`name`,`pwd`,`sex`)<span class="keyword">VALUES</span>(<span class="string">&#x27;张三&#x27;</span>,<span class="string">&#x27;123&#x27;</span>,<span class="string">&#x27;男&#x27;</span>),(<span class="string">&#x27;王五&#x27;</span>,<span class="string">&#x27;456&#x27;</span>,<span class="string">&#x27;男&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>语法：insert  into表名（字段）values（值）</p>
+<h4 id="5-4修改"><a href="#5-4修改" class="headerlink" title="5.4修改"></a>5.4修改</h4><blockquote>
+<p>update   修改谁（条件）  set原来的置=新值</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 修改</span></span><br><span class="line">UPDATE `student` <span class="keyword">SET</span> `name`<span class="operator">=</span><span class="string">&#x27;秦疆&#x27;</span> <span class="keyword">WHERE</span> id<span class="operator">=</span><span class="number">1</span>;</span><br><span class="line">UPDATE `student` <span class="keyword">SET</span> `birthday`<span class="operator">=</span><span class="built_in">CURRENT_TIME</span> <span class="keyword">WHERE</span> id<span class="operator">=</span><span class="number">1</span>;</span><br><span class="line"><span class="comment">-- 语法</span></span><br><span class="line"><span class="comment">--  update 表名 set 字段 =value  where</span></span><br></pre></td></tr></table></figure>
+
+<p>条件：where子句 运算符  id 等于某个值，大于某个值，在某个区间修改…</p>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>含义</th>
+<th>范围</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>=</td>
+<td>等于</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&gt;&lt;或！=</td>
+<td>不等于</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>between…and…</td>
+<td>闭合区间</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>and</td>
+<td>2个条件&amp;&amp;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>or</td>
+<td>或者||</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="5-5-删除"><a href="#5-5-删除" class="headerlink" title="5.5 删除"></a>5.5 删除</h4><blockquote>
+<p>删除</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> `student` <span class="keyword">WHERE</span>  `id`<span class="operator">=</span><span class="number">4</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>truncate命令</p>
+</blockquote>
+<p>作用：完全清空一个数据库表，表的结构和索引约束不会变</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">TRUNCATE</span> `student`</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>delete 和turncate区别</p>
+</blockquote>
+<ul>
+<li>相同点：都能删除数据，都不会删除表结构</li>
+<li>不同：<ul>
+<li>truncate  重新设置自增列 计数器会归零</li>
+<li>truncate不会影响事务  </li>
+</ul>
+</li>
+</ul>
+<p>面试加分项：delete删除的问题，重启数据库，现象</p>
+<ul>
+<li>innodb  自增列会冲1开始（存在内存中的，断点即失）</li>
+<li>myisam  继续会从上一个自增量开始（存在文件中的并不会丢失）</li>
+</ul>
+<h3 id="6-DQL查询数据（重点）"><a href="#6-DQL查询数据（重点）" class="headerlink" title="==6.DQL查询数据（重点）=="></a>==6.DQL查询数据（重点）==</h3><h4 id="6-1DQL"><a href="#6-1DQL" class="headerlink" title="6.1DQL"></a>6.1DQL</h4><ul>
+<li>所有的查询操作都用它  select</li>
+<li>简单的查询 复杂的查询它都能做</li>
+<li>==数据库最核心的语言==</li>
+<li>使用频率最高的</li>
+</ul>
+<h4 id="6-2-指定查询字段"><a href="#6-2-指定查询字段" class="headerlink" title="6.2 指定查询字段"></a>6.2 指定查询字段</h4><blockquote>
+<p>别名</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 别名，给结果起一个名字 AS</span></span><br><span class="line"><span class="keyword">SELECT</span> `studentno` <span class="keyword">AS</span> 学号,`studentname` <span class="keyword">AS</span> 姓名 <span class="keyword">FROM</span> `student`</span><br><span class="line"><span class="comment">-- 函数</span></span><br><span class="line"><span class="comment">-- 函数concat(a,b)</span></span><br><span class="line"><span class="keyword">SELECT</span> CONCAT (<span class="string">&#x27;姓名：&#x27;</span>,`studentname`) <span class="keyword">AS</span> 新名字</span><br><span class="line"> <span class="keyword">FROM</span> `student`</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>去重   distinct   作用：去除select查询出来的结果中重复的数据，只显示一条</p>
+</blockquote>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 发现重复数据  去重</span></span><br><span class="line"> <span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> `studentno` <span class="keyword">FROM</span> `<span class="keyword">result</span>`</span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+<blockquote>
+<p>数据库的列（表达式）</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 学员成绩考试+1分 </span></span><br><span class="line"> <span class="keyword">SELECT</span> `studentresult`,`studentresult`<span class="operator">+</span><span class="number">1</span> <span class="keyword">AS</span> 提分后  <span class="keyword">FROM</span> `<span class="keyword">result</span>` </span><br></pre></td></tr></table></figure>
+
+<p>==数据库中的表达式:文本值，列，null ， 函数，计算表达式，系统表达式==</p>
+<p>select     表达式    from    表</p>
+<h4 id="6-3where条件子句"><a href="#6-3where条件子句" class="headerlink" title="6.3where条件子句"></a>6.3where条件子句</h4><p>作用：检索数据库中符合条件的值</p>
+<blockquote>
+<p>逻辑运算符</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>语法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>and   &amp;&amp;</td>
+<td>a and b   a&amp;&amp;b</td>
+<td>l逻辑与    都真</td>
+</tr>
+<tr>
+<td>or      ||</td>
+<td>a or b   a||b</td>
+<td>逻辑或     一真为真</td>
+</tr>
+<tr>
+<td>not       !</td>
+<td>not a  !a</td>
+<td>逻辑非</td>
+</tr>
+</tbody></table>
+<p>==尽量使用英文字母==</p>
+<blockquote>
+<p>模糊查询：比较运算符</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>语法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IS NULL</td>
+<td>a is null</td>
+<td>如果操作符为null 则结果为真</td>
+</tr>
+<tr>
+<td>IS NOT NULL</td>
+<td>a is not null</td>
+<td>如果操作符为 not null 则结果为真</td>
+</tr>
+<tr>
+<td>between</td>
+<td>a bewteen b and c</td>
+<td>若a在b和c之间结果为真</td>
+</tr>
+<tr>
+<td><strong>like</strong></td>
+<td>a  like b</td>
+<td>sql  匹配  ，如果a匹配b ，则为真</td>
+</tr>
+<tr>
+<td><strong>in</strong></td>
+<td>a in(a1,a2,a3)</td>
+<td>假设a在a1 或者a2，其中的某一个值中，则为真</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>模糊查询</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 模糊查询</span></span><br><span class="line"><span class="comment">-- 查询姓张的同学</span></span><br><span class="line"><span class="comment">-- like  %(代表0到任意一个字符)  _（代表一个字符） </span></span><br><span class="line"><span class="keyword">SELECT</span> `studentname` <span class="keyword">FROM</span> `student`</span><br><span class="line"><span class="keyword">WHERE</span> `studentname`<span class="keyword">LIKE</span> <span class="string">&#x27;_伟&#x27;</span>;</span><br><span class="line"><span class="comment">-- 查询名字中间有嘉的</span></span><br><span class="line"><span class="keyword">SELECT</span> `studentname` <span class="keyword">FROM</span> `student`</span><br><span class="line"><span class="keyword">WHERE</span> `studentname`<span class="keyword">LIKE</span> <span class="string">&#x27;%嘉%&#x27;</span>;</span><br><span class="line"><span class="comment">-- in 查询1000  1001号的同学</span></span><br><span class="line"><span class="keyword">SELECT</span> `studentname` <span class="keyword">FROM</span> `student`</span><br><span class="line"><span class="keyword">WHERE</span> `studentno` <span class="keyword">IN</span>(<span class="number">1000</span>,<span class="number">1001</span>);</span><br><span class="line"><span class="comment">-- ====null   not null</span></span><br><span class="line"><span class="keyword">SELECT</span>`studentname` <span class="keyword">FROM</span> `student`</span><br><span class="line"><span class="keyword">WHERE</span> `address` <span class="operator">=</span><span class="string">&#x27;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-4连表查询"><a href="#6-4连表查询" class="headerlink" title="6.4连表查询"></a>6.4连表查询</h3><blockquote>
+<p>join对比</p>
+</blockquote>
+<img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2018.cnblogs.com%2Fcommon%2F842724%2F202002%2F842724-20200228155137649-1462263734.png&refer=http%3A%2F%2Fimg2018.cnblogs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1616315892&t=710e5808fbd46e832dfa57904c1a3b37" alt="点击查看源网页" style="zoom:33%;" />
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1.分析需求，分析查询的字段来自那些表</span></span><br><span class="line"><span class="comment">2.确定使用哪种链接查询  7中</span></span><br><span class="line"><span class="comment">确定交叉点(两个表的哪个数据是相同的)</span></span><br><span class="line"><span class="comment">判断条件：学生表的no=成绩表的no</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- join</span></span><br><span class="line"><span class="comment">-- 查找参加考试的同学（学号姓名学科成绩）</span></span><br><span class="line"><span class="comment">-- inner join</span></span><br><span class="line"><span class="keyword">SELECT</span> s.`studentno`,`studentname`,`subjectno`,`studentresult`</span><br><span class="line"><span class="keyword">FROM</span> `student` s</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> `<span class="keyword">result</span>` r</span><br><span class="line"><span class="keyword">WHERE</span>  s.`studentno`<span class="operator">=</span>r.`studentno`</span><br><span class="line"><span class="comment">-- right join</span></span><br><span class="line"><span class="keyword">SELECT</span> s.`studentno`,`studentname`,`subjectno`,`studentresult`</span><br><span class="line"><span class="keyword">FROM</span> `student` s</span><br><span class="line"><span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> `<span class="keyword">result</span>` r</span><br><span class="line"><span class="keyword">ON</span>  s.`studentno`<span class="operator">=</span>r.`studentno`</span><br><span class="line"><span class="comment">-- left join</span></span><br><span class="line"><span class="keyword">SELECT</span> s.`studentno`,`studentname`,`subjectno`,`studentresult`</span><br><span class="line"><span class="keyword">FROM</span> `student` s</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> `<span class="keyword">result</span>` r</span><br><span class="line"><span class="keyword">ON</span>  s.`studentno`<span class="operator">=</span>r.`studentno`</span><br></pre></td></tr></table></figure>
+
+
+
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>inner join</td>
+<td>如果表中有一个匹配 就返回行（可用where   可用on）</td>
+</tr>
+<tr>
+<td>right join</td>
+<td>会从右表中返回所有值，即使右表中没有匹配（必须on）</td>
+</tr>
+<tr>
+<td>left  join</td>
+<td>会从左表中返回所有值，即使右表中没有匹配（必须on）</td>
+</tr>
+</tbody></table>
+<p>==join   on  连接查询==</p>
+<p>==where等值查询==</p>
+<p><img src="C:%5CUsers%5CAdmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210328122249803.png" alt="image-20210328122249803"></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>mysql</p><p><a href="http://example.com/2021/10/30/mysql/">http://example.com/2021/10/30/mysql/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>sifosqs</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-10-30</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-10-30</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/mysql/">mysql</a></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/" alt="支付宝"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/10/30/%E7%BA%BF%E7%A8%8B/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">线程</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/10/30/mybatis/"><span class="level-item">mybatis</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">18</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">13</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-30T12:01:39.000Z">2021-10-30</time></p><p class="title"><a href="/2021/10/30/%E7%BA%BF%E7%A8%8B/">线程</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-30T11:59:00.000Z">2021-10-30</time></p><p class="title"><a href="/2021/10/30/mysql/">mysql</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-30T11:57:33.000Z">2021-10-30</time></p><p class="title"><a href="/2021/10/30/mybatis/">mybatis</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-30T11:55:59.000Z">2021-10-30</time></p><p class="title"><a href="/2021/10/30/Git/">Git</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-30T11:54:52.000Z">2021-10-30</time></p><p class="title"><a href="/2021/10/30/markdown/">markdown</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">十月 2021</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Git/"><span class="tag">Git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MySQL/"><span class="tag">MySQL</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/java/"><span class="tag">java</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/markdown/"><span class="tag">markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mybatis/"><span class="tag">mybatis</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mysql/"><span class="tag">mysql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/nginx/"><span class="tag">nginx</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/redis/"><span class="tag">redis</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/spring5/"><span class="tag">spring5</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/springboot/"><span class="tag">springboot</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/vue/"><span class="tag">vue</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BA%BF%E7%A8%8B/"><span class="tag">线程</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="sifosqs" height="28"></a><p class="is-size-7"><span>&copy; 2021 sifosqs</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
