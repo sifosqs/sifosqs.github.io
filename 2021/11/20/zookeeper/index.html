@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>zookeeper - sifosqs</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="sifosqs"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="sifosqs"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Zookeeper"><meta property="og:type" content="blog"><meta property="og:title" content="zookeeper"><meta property="og:url" content="http://example.com/2021/11/20/zookeeper/"><meta property="og:site_name" content="sifosqs"><meta property="og:description" content="Zookeeper"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/img/og_image.png"><meta property="article:published_time" content="2021-11-20T02:31:58.000Z"><meta property="article:modified_time" content="2021-11-20T14:32:05.842Z"><meta property="article:author" content="sifosqs"><meta property="article:tag" content="zookeeper"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2021/11/20/zookeeper/"},"headline":"zookeeper","image":["http://example.com/img/og_image.png"],"datePublished":"2021-11-20T02:31:58.000Z","dateModified":"2021-11-20T14:32:05.842Z","author":{"@type":"Person","name":"sifosqs"},"publisher":{"@type":"Organization","name":"sifosqs","logo":{"@type":"ImageObject","url":"http://example.com/img/logo.svg"}},"description":"Zookeeper"}</script><link rel="canonical" href="http://example.com/2021/11/20/zookeeper/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="sifosqs" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-11-20T02:31:58.000Z" title="2021/11/20 上午10:31:58">2021-11-20</time>发表</span><span class="level-item"><time dateTime="2021-11-20T14:32:05.842Z" title="2021/11/20 下午10:32:05">2021-11-20</time>更新</span><span class="level-item">7 分钟读完 (大约1095个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">zookeeper</h1><div class="content"><h2 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h2><span id="more"></span>
+
+<ol start="3">
+<li><p>zk-入门-特点</p>
+<ul>
+<li>Zookeeper:一个领导者（Leader）,多个跟随者(Follower)组成的集群。</li>
+<li>集群中只要有<strong>半数以上</strong>的节点存活，Zookeeper集群就能正常服务。所以Zookeeper适合安装奇数台服务器。5台服务器挂了两台还剩下三台，可以正常使用，如果6台，挂了三台，还剩下三台，不能使用，浪费了一台。</li>
+<li>全局数据一致：每个Server保存一分相同的数据副本，Client无论连接到哪个Server，数据都是一致的。</li>
+<li>更新请求顺序执行，来自同一个Client的更新请求按其发送顺序一次执行。（先发送，先执行）。</li>
+<li>数据更新原子性，一次数据更细要么成功，要么失败。（把他做成一个大的事务，每次写操作都有事务id——-zxid）</li>
+<li>实时性，在一定时间范围内，Client能读到最新数据，如给Zookeeper集群中的一台服务器写了一个数据，其他服务器在短时间内，会同步更新的</li>
+</ul>
+</li>
+<li><p>zk-入门-数据结构</p>
+<p>Zookeeper数据模型的结构与Unix文件系统和类似，整体上可以做是一个树，每个节点称作一个ZNode。每个ZNode默认能够存储1MB的数据，（所以zookeeper不能存储海量的数据），每个ZNode都可以通过其路径唯一标识</p>
+<p>​                  图</p>
+</li>
+<li><p>zk-入门-应用场景</p>
+</li>
+<li><p>zk-入门-下载地址</p>
+</li>
+<li><p>zk-入门-本地安装</p>
+<ul>
+<li><p>jdk安装：</p>
+<ul>
+<li><p>将jdk解压到opt目录下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk<span class="number">-8u</span>311-linux-x64.tar.gz -C /opt</span><br></pre></td></tr></table></figure></li>
+<li><p>配置环境变量 vim  /etc/profile</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">JAVA_HOME=/opt/jdk1<span class="number">.8</span><span class="number">.0</span>_311</span><br><span class="line">PATH=$JAVA_HOME/bin:$PATH</span><br><span class="line">CLASSPATH=$JAVA_HOME/lib:.</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> JAVA_HOME PATH CLASSPATH</span><br></pre></td></tr></table></figure></li>
+<li><p>source profile 让Linux重新加载这个配置文件</p>
+</li>
+<li><p>安装完成</p>
+</li>
+</ul>
+</li>
+<li><p>安装zookeeper</p>
+<ul>
+<li><p>下载地址<a target="_blank" rel="noopener" href="http://zookeeper.apache.org/releases.html">http://zookeeper.apache.org/releases.html</a></p>
+</li>
+<li><p>选择3.5.7解压到opt目录，重命名</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv apache-zookeeper<span class="number">-3.5</span><span class="number">.7</span>-bin/ zookeeper<span class="number">-3.5</span><span class="number">.7</span>-bin/</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>先将zoo_sample.conf 重命名zoo.conf,然后将conf中的zoo_sample.conf 里面的dataDir换成自己zookeeper里面创建的zkData文件夹</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dataDir=/opt/zookeeper<span class="number">-3.5</span><span class="number">.7</span>-bin/zkData</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>启动zookeeper服务端</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/zkServer.sh start</span><br></pre></td></tr></table></figure></li>
+<li><p>启动zookeeper客户端</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/skCli.sh </span><br></pre></td></tr></table></figure></li>
+<li><p>启动成功后输入命令  ls /查看节点</p>
+</li>
+<li><p>查看zookeeper的状态</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/zkServer.sh status</span><br></pre></td></tr></table></figure></li>
+<li><p>退出zookeeper客户端：quit</p>
+</li>
+<li><p>停止zookeepe服务端：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/zkServer.sh stop</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>zk-本地-配置参数解读</p>
+<ul>
+<li>ticktime：通信心跳时间，zookeeper服务器与客户端心跳时间</li>
+<li>initLimit：Leader和Follower初始通信时限</li>
+<li>syncLimit：Leader和Follower同步通信时限</li>
+<li>dataDir：保存zookeeper中的数据<ul>
+<li>注意：默认的tmp目录，容易被Linux系统定期删除，所以一般不用默认的tmp目录。</li>
+</ul>
+</li>
+<li>clientPort:客户端连接端口，通常不做修改</li>
+</ul>
+</li>
+<li><p>zk-集群-安装</p>
+<p>在zkData目录下，vim一个文件==myid==，必须是这个名称。1号虚拟机为1,2号虚拟机为2</p>
+<p>增加如下配置：zoo.cfg</p>
+<blockquote>
+<p>server.1=sqsLinux:2888:3888</p>
+<p>server.2=sqsLinux02:2888:3888</p>
+</blockquote>
+<p>配置参数解读：</p>
+<blockquote>
+<p>server.A=B:C:D</p>
+</blockquote>
+<p>A是一个数字，表示这是第几个服务器    </p>
+<p>​        集群模式下配置一个文件myid，这个文件在dataDir目录下，这个文件里面有个数据就是A的值，Zookeeper启动是时读取文件，拿到里面的数据与zoo.cfg里面的配置信息比较从而判断到底是哪个server。</p>
+<p>B是这个服务器的地址</p>
+<p>C是这个服务器Follower与集群中Leader服务器交换信息的端口；</p>
+<p>D是万一集群中的Leader服务器挂了，需要一个端口来重新进行选举，选出一个新的Leader，而这个端口就是用来执行选举时服务器相互通信的端口。</p>
+<ul>
+<li><p>集群完毕后，启动zookeeper报了个error？</p>
+<p>因为你没有启动半数以上的服务器，所以没有那个Leader，</p>
+</li>
+<li><p>这时启动第二台服务器，发现启动成功。==这个地方要是启动两台都是error，将防火墙关闭==service firewalld stop</p>
+</li>
+<li><p>两台都启动成功，查看2号服务器zookeeper状态是Leader，1号服务器是follower</p>
+</li>
+</ul>
+</li>
+<li></li>
+</ol>
+</div><div class="article-licensing box"><div class="licensing-title"><p>zookeeper</p><p><a href="http://example.com/2021/11/20/zookeeper/">http://example.com/2021/11/20/zookeeper/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>sifosqs</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-11-20</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-11-20</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/zookeeper/">zookeeper</a></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/" alt="支付宝"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/11/18/springcloud/"><span class="level-item">springcloud</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">21</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">16</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-20T02:31:58.000Z">2021-11-20</time></p><p class="title"><a href="/2021/11/20/zookeeper/">zookeeper</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-18T04:18:34.000Z">2021-11-18</time></p><p class="title"><a href="/2021/11/18/springcloud/">springcloud</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-11-03T02:41:36.000Z">2021-11-03</time></p><p class="title"><a href="/2021/11/03/%E6%80%BB%E7%BB%93%E9%97%AE%E9%A2%98/">总结问题</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-30T12:01:39.000Z">2021-10-30</time></p><p class="title"><a href="/2021/10/30/%E7%BA%BF%E7%A8%8B/">线程</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-10-30T11:59:00.000Z">2021-10-30</time></p><p class="title"><a href="/2021/10/30/mysql/">mysql</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">十一月 2021</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">十月 2021</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Git/"><span class="tag">Git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/MySQL/"><span class="tag">MySQL</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/java/"><span class="tag">java</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/markdown/"><span class="tag">markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mybatis/"><span class="tag">mybatis</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mysql/"><span class="tag">mysql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/nginx/"><span class="tag">nginx</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/redis/"><span class="tag">redis</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/spring5/"><span class="tag">spring5</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/springboot/"><span class="tag">springboot</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/springcloud/"><span class="tag">springcloud</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/vue/"><span class="tag">vue</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/zookeeper/"><span class="tag">zookeeper</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98/"><span class="tag">各种问题</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BA%BF%E7%A8%8B/"><span class="tag">线程</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="sifosqs" height="28"></a><p class="is-size-7"><span>&copy; 2021 sifosqs</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
